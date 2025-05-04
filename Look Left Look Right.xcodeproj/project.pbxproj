@@ -19,6 +19,7 @@
 		3265F3762DC74A46006D8BFD /* Exceptions for "Shared" folder in "Floor" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
+				Constants.swift,
 				FloorToServer.swift,
 			);
 			target = 3265F3692DC74A3A006D8BFD /* Floor */;

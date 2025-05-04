@@ -7,14 +7,16 @@
 
 import Foundation
 
-struct FloorToServer: Codable, Identifiable {
+struct Floor: Codable, Identifiable, Sendable {
     var id: Int { index }
     
     var index: Int
     var gotHuman: Bool
+    var date: Date
     
     enum CodingKeys: String, CodingKey {
         case index = "i"
         case gotHuman = "h"
+        case date = "d"
     }
 }
