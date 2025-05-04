@@ -6,9 +6,24 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		3265F3622DC7499E006D8BFD /* Vapor in Frameworks */ = {isa = PBXBuildFile; productRef = 3265F3612DC7499E006D8BFD /* Vapor */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		3265F3512DC74955006D8BFD /* Look Left Look Right.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Look Left Look Right.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3265F36A2DC74A3A006D8BFD /* Floor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Floor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		3265F3762DC74A46006D8BFD /* Exceptions for "Shared" folder in "Floor" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				FloorToServer.swift,
+			);
+			target = 3265F3692DC74A3A006D8BFD /* Floor */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		3265F3532DC74955006D8BFD /* Look Left Look Right */ = {
@@ -16,10 +31,31 @@
 			path = "Look Left Look Right";
 			sourceTree = "<group>";
 		};
+		3265F3632DC749B6006D8BFD /* Shared */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				3265F3762DC74A46006D8BFD /* Exceptions for "Shared" folder in "Floor" target */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		3265F36B2DC74A3A006D8BFD /* Floor */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Floor;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		3265F34E2DC74955006D8BFD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3265F3622DC7499E006D8BFD /* Vapor in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3265F3672DC74A3A006D8BFD /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -32,7 +68,9 @@
 		3265F3482DC74955006D8BFD = {
 			isa = PBXGroup;
 			children = (
+				3265F3632DC749B6006D8BFD /* Shared */,
 				3265F3532DC74955006D8BFD /* Look Left Look Right */,
+				3265F36B2DC74A3A006D8BFD /* Floor */,
 				3265F3522DC74955006D8BFD /* Products */,
 			);
 			sourceTree = "<group>";
@@ -41,6 +79,7 @@
 			isa = PBXGroup;
 			children = (
 				3265F3512DC74955006D8BFD /* Look Left Look Right.app */,
+				3265F36A2DC74A3A006D8BFD /* Floor.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -62,12 +101,36 @@
 			);
 			fileSystemSynchronizedGroups = (
 				3265F3532DC74955006D8BFD /* Look Left Look Right */,
+				3265F3632DC749B6006D8BFD /* Shared */,
 			);
 			name = "Look Left Look Right";
 			packageProductDependencies = (
+				3265F3612DC7499E006D8BFD /* Vapor */,
 			);
 			productName = "Look Left Look Right";
 			productReference = 3265F3512DC74955006D8BFD /* Look Left Look Right.app */;
+			productType = "com.apple.product-type.application";
+		};
+		3265F3692DC74A3A006D8BFD /* Floor */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3265F3722DC74A3B006D8BFD /* Build configuration list for PBXNativeTarget "Floor" */;
+			buildPhases = (
+				3265F3662DC74A3A006D8BFD /* Sources */,
+				3265F3672DC74A3A006D8BFD /* Frameworks */,
+				3265F3682DC74A3A006D8BFD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				3265F36B2DC74A3A006D8BFD /* Floor */,
+			);
+			name = Floor;
+			packageProductDependencies = (
+			);
+			productName = Floor;
+			productReference = 3265F36A2DC74A3A006D8BFD /* Floor.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -83,6 +146,9 @@
 					3265F3502DC74955006D8BFD = {
 						CreatedOnToolsVersion = 16.3;
 					};
+					3265F3692DC74A3A006D8BFD = {
+						CreatedOnToolsVersion = 16.3;
+					};
 				};
 			};
 			buildConfigurationList = 3265F34C2DC74955006D8BFD /* Build configuration list for PBXProject "Look Left Look Right" */;
@@ -94,12 +160,16 @@
 			);
 			mainGroup = 3265F3482DC74955006D8BFD;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				3265F3602DC7499E006D8BFD /* XCRemoteSwiftPackageReference "vapor" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 3265F3522DC74955006D8BFD /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				3265F3502DC74955006D8BFD /* Look Left Look Right */,
+				3265F3692DC74A3A006D8BFD /* Floor */,
 			);
 		};
 /* End PBXProject section */
@@ -112,10 +182,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		3265F3682DC74A3A006D8BFD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		3265F34D2DC74955006D8BFD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3265F3662DC74A3A006D8BFD /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -299,6 +383,67 @@
 			};
 			name = Release;
 		};
+		3265F3732DC74A3B006D8BFD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = XL5JK4F896;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = sg.swiftin.Floor;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		3265F3742DC74A3B006D8BFD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = XL5JK4F896;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = sg.swiftin.Floor;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -320,7 +465,35 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		3265F3722DC74A3B006D8BFD /* Build configuration list for PBXNativeTarget "Floor" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3265F3732DC74A3B006D8BFD /* Debug */,
+				3265F3742DC74A3B006D8BFD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		3265F3602DC7499E006D8BFD /* XCRemoteSwiftPackageReference "vapor" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/vapor/vapor";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.114.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		3265F3612DC7499E006D8BFD /* Vapor */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3265F3602DC7499E006D8BFD /* XCRemoteSwiftPackageReference "vapor" */;
+			productName = Vapor;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 3265F3492DC74955006D8BFD /* Project object */;
 }
