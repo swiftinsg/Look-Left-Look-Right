@@ -14,6 +14,8 @@ import Vapor
 final class Server: Sendable {
     var floorTiles: [Floor]
     
+    var isGameIdle: Bool = true
+    
     init() {
         floorTiles = (0..<9).map {
             Floor(index: $0, gotHuman: false, date: .distantPast)
@@ -31,6 +33,10 @@ final class Server: Sendable {
             return "lgtm"
         }
         
+        app.on(.POST, "scan") { req in
+            return try await self.onScanReceived(request: req) ? "hello" : "goaway"
+        }
+        
         try! await app.execute()
     }
     
@@ -40,5 +46,17 @@ final class Server: Sendable {
         await MainActor.run {
             self.floorTiles[message.index] = message
         }
+    }
+    
+    func onScanReceived(request: Request) async throws -> Bool {
+        let scanEntry = try request.content.decode(ScanEntry.self)
+        
+        guard isGameIdle else {
+            return false
+        }
+        
+        isGameIdle = false
+        
+        return true
     }
 }
