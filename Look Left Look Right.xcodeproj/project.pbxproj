@@ -14,6 +14,7 @@
 		3265F3512DC74955006D8BFD /* Look Left Look Right.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Look Left Look Right.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3265F36A2DC74A3A006D8BFD /* Floor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Floor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		32A7B2702DC7BE0B0038EAF3 /* Scan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Scan.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		32A7B2952DC7E5520038EAF3 /* Camera.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Camera.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -59,6 +60,11 @@
 			path = Scan;
 			sourceTree = "<group>";
 		};
+		32A7B2962DC7E5520038EAF3 /* Camera */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Camera;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +90,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		32A7B2922DC7E5520038EAF3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -91,6 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				3265F3632DC749B6006D8BFD /* Shared */,
+				32A7B2962DC7E5520038EAF3 /* Camera */,
 				3265F3532DC74955006D8BFD /* Look Left Look Right */,
 				3265F36B2DC74A3A006D8BFD /* Floor */,
 				32A7B2712DC7BE0B0038EAF3 /* Scan */,
@@ -104,6 +118,7 @@
 				3265F3512DC74955006D8BFD /* Look Left Look Right.app */,
 				3265F36A2DC74A3A006D8BFD /* Floor.app */,
 				32A7B2702DC7BE0B0038EAF3 /* Scan.app */,
+				32A7B2952DC7E5520038EAF3 /* Camera.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -179,6 +194,28 @@
 			productReference = 32A7B2702DC7BE0B0038EAF3 /* Scan.app */;
 			productType = "com.apple.product-type.application";
 		};
+		32A7B2942DC7E5520038EAF3 /* Camera */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 32A7B29D2DC7E5540038EAF3 /* Build configuration list for PBXNativeTarget "Camera" */;
+			buildPhases = (
+				32A7B2912DC7E5520038EAF3 /* Sources */,
+				32A7B2922DC7E5520038EAF3 /* Frameworks */,
+				32A7B2932DC7E5520038EAF3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				32A7B2962DC7E5520038EAF3 /* Camera */,
+			);
+			name = Camera;
+			packageProductDependencies = (
+			);
+			productName = Camera;
+			productReference = 32A7B2952DC7E5520038EAF3 /* Camera.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -196,6 +233,9 @@
 						CreatedOnToolsVersion = 16.3;
 					};
 					32A7B26F2DC7BE0B0038EAF3 = {
+						CreatedOnToolsVersion = 16.3;
+					};
+					32A7B2942DC7E5520038EAF3 = {
 						CreatedOnToolsVersion = 16.3;
 					};
 				};
@@ -220,6 +260,7 @@
 				3265F3502DC74955006D8BFD /* Look Left Look Right */,
 				3265F3692DC74A3A006D8BFD /* Floor */,
 				32A7B26F2DC7BE0B0038EAF3 /* Scan */,
+				32A7B2942DC7E5520038EAF3 /* Camera */,
 			);
 		};
 /* End PBXProject section */
@@ -246,6 +287,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		32A7B2932DC7E5520038EAF3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -264,6 +312,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		32A7B26C2DC7BE0B0038EAF3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		32A7B2912DC7E5520038EAF3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -569,6 +624,67 @@
 			};
 			name = Release;
 		};
+		32A7B29E2DC7E5540038EAF3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = XL5JK4F896;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = sg.swiftin.Camera;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		32A7B29F2DC7E5540038EAF3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = XL5JK4F896;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = sg.swiftin.Camera;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -604,6 +720,15 @@
 			buildConfigurations = (
 				32A7B2792DC7BE0C0038EAF3 /* Debug */,
 				32A7B27A2DC7BE0C0038EAF3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		32A7B29D2DC7E5540038EAF3 /* Build configuration list for PBXNativeTarget "Camera" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				32A7B29E2DC7E5540038EAF3 /* Debug */,
+				32A7B29F2DC7E5540038EAF3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
