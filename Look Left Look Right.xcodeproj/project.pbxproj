@@ -20,7 +20,7 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Constants.swift,
-				FloorToServer.swift,
+				Floor.swift,
 			);
 			target = 3265F3692DC74A3A006D8BFD /* Floor */;
 		};

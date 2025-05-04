@@ -8,14 +8,29 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @State private var server = Server()
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        NavigationStack {
+            VStack(spacing: 0) {
+                ForEach(server.floorTiles.reversed()) { tile in
+                    Rectangle()
+                        .fill(tile.gotHuman ? .blue : .clear)
+                        .overlay {
+                            Rectangle()
+                                .stroke(lineWidth: 1)
+                            
+                            Text(tile.date.formatted(date: .omitted, time: .complete))
+                        }
+                }
+            }
+            .navigationTitle("Debug View")
         }
         .padding()
+        .task {
+            await server.start()
+        }
     }
 }
 
