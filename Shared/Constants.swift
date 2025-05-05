@@ -27,13 +27,16 @@ enum Constants: Sendable {
     // |    |   |    | \|/
     
     // Playable area, think of this as the space the user stands in
-    static let playableWidth: Double = 1.0
+    // In meters
+    static let playableWidth: Double = 0.5
     
     // Outside of this bounds, walls will be created
-    static let totalWidth: Double = 1.0
+    static let totalWidth: Double = 2.5
     
-    static let height: Double = 10.0
+    // In meters
+    static let height: Double = 4.5
     
+    // In meters
     static var tileHeight: Double {
         height / Double(numberOfFloorTiles)
     }
