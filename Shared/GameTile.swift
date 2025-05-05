@@ -18,6 +18,13 @@ enum GameTile: Codable {
         }
     }
     
+    var train: Train? {
+        switch self {
+        case .train(let train): train
+        case .peaceful: nil
+        }
+    }
+    
     static func random() -> Self {
         Bool.random() ? .train(.random()) : .peaceful(.random())
     }

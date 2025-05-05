@@ -26,7 +26,7 @@ struct TileView: View {
                         }
                     }
             case .train(let train):
-                TrainPreviewView(train: train)
+                TrainPreviewView(index: tileIndex, train: train)
             }
             
             Rectangle()
@@ -35,9 +35,17 @@ struct TileView: View {
             HStack(spacing: 0) {
                 Rectangle().fill(.clear)
                 Rectangle().fill(.clear)
-                Rectangle()
-                    .fill(.white)
-                    .opacity(0.3)
+                
+                if let trainPosition = server.trainPositions[tileIndex], let train = server.gameLayout.tiles[tileIndex].train, train.inCrashRange(for: trainPosition) {
+                    Rectangle()
+                        .fill(.red)
+                        .opacity(0.3)
+                } else {
+                    Rectangle()
+                        .fill(.white)
+                        .opacity(0.3)
+                }
+                
                 Rectangle().fill(.clear)
                 Rectangle().fill(.clear)
             }

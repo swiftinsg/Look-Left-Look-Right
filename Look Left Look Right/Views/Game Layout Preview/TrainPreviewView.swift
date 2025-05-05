@@ -9,6 +9,9 @@ import SwiftUI
 
 struct TrainPreviewView: View {
     
+    @Environment(Server.self) var server
+    
+    var index: Int
     var train: GameTile.Train
     
     @State private var metersPerPixel = 10.0
@@ -54,7 +57,7 @@ struct TrainPreviewView: View {
                 }
             }
             .padding(.vertical)
-            .position(x: totalLength / 2, y: totalHeight / 2)
+            .position(x: totalLength / 2 + (server.trainPositions[index] ?? 0.0) * metersPerPixel, y: totalHeight / 2)
         }
         .onGeometryChange(for: Double.self) { proxy in
             proxy.size.width

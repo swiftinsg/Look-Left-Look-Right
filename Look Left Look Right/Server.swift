@@ -20,6 +20,8 @@ final class Server: Sendable {
         }?.index
     }
     
+    var trainPositions: [Int: Double] = [:]
+    
     var gameLayout = GameLayout.random()
     
     var isGameIdle: Bool = true
@@ -28,6 +30,8 @@ final class Server: Sendable {
         floorTiles = (0..<9).map {
             Floor(index: $0, gotHuman: false, date: .distantPast)
         }
+        
+        updateTrainPositions()
     }
     
     func start() async {
@@ -51,6 +55,26 @@ final class Server: Sendable {
         
         
         try! await app.execute()
+    }
+    
+    func updateTrainPositions() {
+        Task {
+            while true {
+                try await Task.sleep(for: .seconds(0.01))
+                
+                var trainPosition: [Int: Double] = [:]
+                
+                for (index, tile) in gameLayout.tiles.enumerated() {
+                    switch tile {
+                    case .train(let train):
+                        trainPosition[index] = train.position(for: gameLayout.gameStartTime, currentTime: .now) ?? 10
+                    default: continue
+                    }
+                }
+                
+                self.trainPositions = trainPosition
+            }
+        }
     }
     
     func onFloorUpdateReceived(request: Request) async throws {
