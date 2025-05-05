@@ -23,15 +23,28 @@
 			membershipExceptions = (
 				Constants.swift,
 				Floor.swift,
+				GameLayout.swift,
+				GameTile.swift,
 			);
 			target = 3265F3692DC74A3A006D8BFD /* Floor */;
 		};
 		32A7B27C2DC7BE170038EAF3 /* Exceptions for "Shared" folder in "Scan" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
+				GameLayout.swift,
+				GameTile.swift,
 				ScanEntry.swift,
 			);
 			target = 32A7B26F2DC7BE0B0038EAF3 /* Scan */;
+		};
+		32A7B2AE2DC7EE200038EAF3 /* Exceptions for "Shared" folder in "Camera" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Constants.swift,
+				GameLayout.swift,
+				GameTile.swift,
+			);
+			target = 32A7B2942DC7E5520038EAF3 /* Camera */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
@@ -46,6 +59,7 @@
 			exceptions = (
 				3265F3762DC74A46006D8BFD /* Exceptions for "Shared" folder in "Floor" target */,
 				32A7B27C2DC7BE170038EAF3 /* Exceptions for "Shared" folder in "Scan" target */,
+				32A7B2AE2DC7EE200038EAF3 /* Exceptions for "Shared" folder in "Camera" target */,
 			);
 			path = Shared;
 			sourceTree = "<group>";

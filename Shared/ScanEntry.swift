@@ -11,9 +11,12 @@ struct ScanEntry: Codable {
     var date: Date
     var id: String
     
+    var name: String?
+    
     enum CodingKeys: String, CodingKey {
         case date = "d"
         case id = "i"
+        case name = "n"
     }
     
     static let alumniId: String = "alumni"

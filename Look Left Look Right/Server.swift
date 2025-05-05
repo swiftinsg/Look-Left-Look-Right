@@ -14,6 +14,8 @@ import Vapor
 final class Server: Sendable {
     var floorTiles: [Floor]
     
+    var gameLayout = GameLayout.random()
+    
     var isGameIdle: Bool = true
     
     init() {
@@ -33,9 +35,14 @@ final class Server: Sendable {
             return "lgtm"
         }
         
-        app.on(.POST, "scan") { req in
-            return try await self.onScanReceived(request: req) ? "hello" : "goaway"
+        app.on(.GET, "ted") { req in
+            return await self.gameLayout
         }
+        
+        app.on(.POST, "scan") { req in
+            return try await self.onScanReceived(request: req) ? "hello alumni" : "goaway"
+        }
+        
         
         try! await app.execute()
     }
