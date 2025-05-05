@@ -51,7 +51,7 @@ struct ContentView: View {
                             server.gameLayout = .random()
                         }
                     }
-                    GameLayoutPreviewView(gameLayout: server.gameLayout)
+                    GameLayoutPreviewView()
                 }
             }
             .navigationTitle("Debug View")
@@ -60,6 +60,7 @@ struct ContentView: View {
         .task {
             await server.start()
         }
+        .environment(server)
     }
 }
 

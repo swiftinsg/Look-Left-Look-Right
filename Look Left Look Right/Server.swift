@@ -14,6 +14,12 @@ import Vapor
 final class Server: Sendable {
     var floorTiles: [Floor]
     
+    var userCurrentTile: Int? {
+        floorTiles.filter { $0.gotHuman }.min {
+            $0.date > $1.date
+        }?.index
+    }
+    
     var gameLayout = GameLayout.random()
     
     var isGameIdle: Bool = true
