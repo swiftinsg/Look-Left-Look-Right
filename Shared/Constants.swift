@@ -36,8 +36,19 @@ enum Constants: Sendable {
     // In meters
     static let height: Double = 4.5
     
+    // In meters, the length of a single train car
+    static let trainCarLength: Double = 1.0
+    
+    // In meters
+    // If train is >1 car long, it needs a linker between each car
+    static let trainCarLinkerLength: Double = 0.1
+    
     // In meters
     static var tileHeight: Double {
         height / Double(numberOfFloorTiles)
+    }
+    
+    static var crashRange: ClosedRange<Double> {
+        totalWidth / 2 - playableWidth / 2 ... (totalWidth - (totalWidth / 2 - playableWidth / 2))
     }
 }

@@ -43,7 +43,5 @@ struct GameLayout {
 #if canImport(Vapor)
 import Vapor
 
-extension GameLayout: Content  {
-    
-}
+extension GameLayout: Content {}
 #endif

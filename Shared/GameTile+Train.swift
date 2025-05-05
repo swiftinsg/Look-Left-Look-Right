@@ -26,6 +26,10 @@ extension GameTile {
         // is the train coming from lhs or rhs
         var direction: Direction
         
+        var length: Double {
+            Double(cars) * Constants.trainCarLength + Double(cars - 1) * Constants.trainCarLinkerLength
+        }
+        
         enum Direction: Int, Equatable, Codable {
             case left
             case right
@@ -36,12 +40,42 @@ extension GameTile {
         }
         
         static func random() -> Self {
-            let frequency: TimeInterval = .random(in: 3...8)
             let speed: Double = .random(in: 1...5)
             let cars: Int = Int.random(in: 1...3)
+            
+            let trainLength = Double(cars) * Constants.trainCarLength + Double(cars - 1) * Constants.trainCarLinkerLength
+            
+            let timeToTravelAcross = (trainLength + Constants.totalWidth) / speed
+            
+            let frequency: TimeInterval = .random(in: timeToTravelAcross...timeToTravelAcross * 2)
             let startTimeOffset = TimeInterval.random(in: -frequency...frequency)
             
             return Train(startTimeOffset: startTimeOffset, frequency: frequency, speed: speed, cars: cars, direction: .random())
+        }
+        
+        // return in meters offset from 0
+        func position(for startTime: Date, currentTime: Date) -> Double? {
+            let elapsed = currentTime.timeIntervalSince(startTime) + startTimeOffset
+            
+            let timeSinceLastTrain = abs(elapsed.truncatingRemainder(dividingBy: frequency))
+            
+            let trainLength = Double(cars) * Constants.trainCarLength + Double(cars - 1) * Constants.trainCarLinkerLength
+            
+            switch direction {
+            case .left:
+                return -trainLength + speed * timeSinceLastTrain
+            case .right:
+                return Constants.totalWidth - speed * timeSinceLastTrain
+            }
+        }
+        
+        func inCrashRange(for position: Double) -> Bool {
+            let front = position
+            let rear = front + length
+            
+            let trainRange = min(front, rear)...max(front, rear)
+            
+            return trainRange.overlaps(Constants.crashRange)
         }
     }
 }
