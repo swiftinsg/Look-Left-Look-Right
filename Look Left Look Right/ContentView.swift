@@ -25,6 +25,7 @@ struct ContentView: View {
                             
                             Button {
                                 server.floorTiles[effectiveIndex].gotHuman.toggle()
+                                server.floorTiles[effectiveIndex].date = .now
                             } label: {
                                 Rectangle()
                                     .fill(tile.gotHuman ? .blue : .clear)
