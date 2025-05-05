@@ -25,6 +25,8 @@
 				Floor.swift,
 				GameLayout.swift,
 				GameTile.swift,
+				"GameTile+Train.swift",
+				"GameTile+TreePlacement.swift",
 			);
 			target = 3265F3692DC74A3A006D8BFD /* Floor */;
 		};
@@ -33,6 +35,8 @@
 			membershipExceptions = (
 				GameLayout.swift,
 				GameTile.swift,
+				"GameTile+Train.swift",
+				"GameTile+TreePlacement.swift",
 				ScanEntry.swift,
 			);
 			target = 32A7B26F2DC7BE0B0038EAF3 /* Scan */;
@@ -43,6 +47,8 @@
 				Constants.swift,
 				GameLayout.swift,
 				GameTile.swift,
+				"GameTile+Train.swift",
+				"GameTile+TreePlacement.swift",
 			);
 			target = 32A7B2942DC7E5520038EAF3 /* Camera */;
 		};
