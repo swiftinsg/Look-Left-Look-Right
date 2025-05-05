@@ -37,7 +37,7 @@ struct ContentView: View {
                                     }
                             }
                             .buttonStyle(.plain)
-                            .keyboardShortcut(KeyEquivalent(Character("\(effectiveIndex)")))
+                            .keyboardShortcut(KeyEquivalent(Character("\(effectiveIndex == 0 ? "`" : String(effectiveIndex))")))
                         }
                     }
                 }
