@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		14D2C3972DC90FB300B7BE46 /* SwiftUINFC in Frameworks */ = {isa = PBXBuildFile; productRef = 14D2C3962DC90FB300B7BE46 /* SwiftUINFC */; };
 		3265F3622DC7499E006D8BFD /* Vapor in Frameworks */ = {isa = PBXBuildFile; productRef = 3265F3612DC7499E006D8BFD /* Vapor */; };
 /* End PBXBuildFile section */
 
@@ -33,11 +34,13 @@
 		32A7B27C2DC7BE170038EAF3 /* Exceptions for "Shared" folder in "Scan" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
+				Constants.swift,
 				GameLayout.swift,
 				GameTile.swift,
 				"GameTile+Train.swift",
 				"GameTile+TreePlacement.swift",
 				ScanEntry.swift,
+				StudentExport.swift,
 			);
 			target = 32A7B26F2DC7BE0B0038EAF3 /* Scan */;
 		};
@@ -55,6 +58,11 @@
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		1461C3EB2DC90C99005F301B /* Scan */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Scan;
+			sourceTree = "<group>";
+		};
 		3265F3532DC74955006D8BFD /* Look Left Look Right */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = "Look Left Look Right";
@@ -73,11 +81,6 @@
 		3265F36B2DC74A3A006D8BFD /* Floor */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = Floor;
-			sourceTree = "<group>";
-		};
-		32A7B2712DC7BE0B0038EAF3 /* Scan */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = Scan;
 			sourceTree = "<group>";
 		};
 		32A7B2962DC7E5520038EAF3 /* Camera */ = {
@@ -107,6 +110,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				14D2C3972DC90FB300B7BE46 /* SwiftUINFC in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -120,6 +124,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		14E503592DC91BC0006C5D8D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		3265F3482DC74955006D8BFD = {
 			isa = PBXGroup;
 			children = (
@@ -127,7 +138,8 @@
 				32A7B2962DC7E5520038EAF3 /* Camera */,
 				3265F3532DC74955006D8BFD /* Look Left Look Right */,
 				3265F36B2DC74A3A006D8BFD /* Floor */,
-				32A7B2712DC7BE0B0038EAF3 /* Scan */,
+				1461C3EB2DC90C99005F301B /* Scan */,
+				14E503592DC91BC0006C5D8D /* Frameworks */,
 				3265F3522DC74955006D8BFD /* Products */,
 			);
 			sourceTree = "<group>";
@@ -205,10 +217,11 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				32A7B2712DC7BE0B0038EAF3 /* Scan */,
+				1461C3EB2DC90C99005F301B /* Scan */,
 			);
 			name = Scan;
 			packageProductDependencies = (
+				14D2C3962DC90FB300B7BE46 /* SwiftUINFC */,
 			);
 			productName = Scan;
 			productReference = 32A7B2702DC7BE0B0038EAF3 /* Scan.app */;
@@ -271,6 +284,7 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				3265F3602DC7499E006D8BFD /* XCRemoteSwiftPackageReference "vapor" */,
+				14D2C3952DC90FB300B7BE46 /* XCRemoteSwiftPackageReference "SwiftUINFC" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 3265F3522DC74955006D8BFD /* Products */;
@@ -588,11 +602,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Scan/Scan.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = XL5JK4F896;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NFCReaderUsageDescription = "For scanning student badges";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -618,11 +634,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Scan/Scan.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = XL5JK4F896;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NFCReaderUsageDescription = "For scanning student badges";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -756,6 +774,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		14D2C3952DC90FB300B7BE46 /* XCRemoteSwiftPackageReference "SwiftUINFC" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/swiftinsg/SwiftUINFC.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		3265F3602DC7499E006D8BFD /* XCRemoteSwiftPackageReference "vapor" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/vapor/vapor";
@@ -767,6 +793,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		14D2C3962DC90FB300B7BE46 /* SwiftUINFC */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 14D2C3952DC90FB300B7BE46 /* XCRemoteSwiftPackageReference "SwiftUINFC" */;
+			productName = SwiftUINFC;
+		};
 		3265F3612DC7499E006D8BFD /* Vapor */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 3265F3602DC7499E006D8BFD /* XCRemoteSwiftPackageReference "vapor" */;
