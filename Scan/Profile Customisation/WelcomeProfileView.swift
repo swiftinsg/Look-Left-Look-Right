@@ -6,17 +6,37 @@
 //
 
 import SwiftUI
-
+import Vision
 struct WelcomeProfileView: View {
     @Binding var student: StudentExport?
     @Binding var appState: AppState
+    
+    @StateObject private var model = DataModel()
     var ip: String
     var body: some View {
         if let student {
             VStack {
-                Image(.test)
-                    .resizable()
-                    .scaledToFit()
+                if let image = model.viewfinderImage {
+                    if let faceImage = model.takenImage {
+                        faceImage
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 300, height: 300)
+                    } else {
+                        // No image taken means no face detected, just show viewfinder
+                        VStack {
+                            image
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 300, height: 300)
+                            Text("Make sure your face is in frame!")
+                                .font(.caption)
+                        }
+                        
+                    }
+                    
+                }
+                    
                 Text(student.name)
                     .font(.headline)
                     .padding()
@@ -49,8 +69,12 @@ struct WelcomeProfileView: View {
                     }.resume()
                     
                 }
+                .disabled(model.takenImage == nil)
                 .padding()
                 .buttonStyle(.borderedProminent)
+            }
+            .task {
+                await model.camera.start()
             }
         }
     }

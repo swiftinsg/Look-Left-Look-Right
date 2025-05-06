@@ -41,11 +41,8 @@ struct ScanView: View {
                     Text("Alumni")
                 }
                 .padding()
-                
             }
-            
             .buttonStyle(.borderedProminent)
-            
         }
         .nfcReader(isPresented: $isScannerShown) { messages in
             guard let message = messages.first,
