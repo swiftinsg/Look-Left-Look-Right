@@ -93,11 +93,13 @@ final class DataModel: ObservableObject {
             do {
                 let points = try await request.perform(on: image).map { observation in
                     print("Face detected \(observation.description)")
+                    
                     return observation
                 }
                 
                 
-                // cancel task if nothing detected
+                // cancel task if nothing detected after 1s
+                try await Task.sleep(for: .seconds(1))
                 visionTask!.cancel()
             } catch {
                 print("Error in face detection: \(error.localizedDescription)")
