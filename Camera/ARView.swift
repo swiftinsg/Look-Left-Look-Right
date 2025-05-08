@@ -23,6 +23,7 @@ struct ARView: UIViewRepresentable {
         configuration.detectionImages = referenceImages!
         
         configuration.isLightEstimationEnabled = true
+        configuration.environmentTexturing = .automatic
         
         view.delegate = gameManager
         

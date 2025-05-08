@@ -25,6 +25,13 @@ enum GameTile: Codable {
         }
     }
     
+    var tree: TreePlacement? {
+        switch self {
+        case .peaceful(let tree): tree
+        case .train: nil
+        }
+    }
+    
     static func random() -> Self {
         Bool.random() ? .train(.random()) : .peaceful(.random())
     }

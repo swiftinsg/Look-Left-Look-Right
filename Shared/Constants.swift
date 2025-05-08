@@ -40,6 +40,12 @@ enum Constants: Sendable {
     static let trainCarLength: Double = 1.0
     
     // In meters
+    static let trainCarHeight: Double = 0.58
+    
+    // In meters
+    static let trackHeight: Double = 0.12
+    
+    // In meters
     // If train is >1 car long, it needs a linker between each car
     static let trainCarLinkerLength: Double = 0.1
     
@@ -54,4 +60,14 @@ enum Constants: Sendable {
     
     // In meters
     static let imageAnchorWidth: Double = 0.25
+    
+    static let sleeperWidth: Double = 0.05
+    
+    static let sleeperHeight: Double = 0.02
+    
+    static let tieGap: Double = 0.1
+    
+    static let barkHeight: Double = 0.7
+    static let treeDiameter: Double = 0.08
+    static let treeLeafDiameter: Double = 0.4
 }
