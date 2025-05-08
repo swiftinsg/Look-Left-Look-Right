@@ -7,9 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		14D2C3972DC90FB300B7BE46 /* SwiftUINFC in Frameworks */ = {isa = PBXBuildFile; productRef = 14D2C3962DC90FB300B7BE46 /* SwiftUINFC */; };
+		14E505342DCD2B31006C5D8D /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = 14E505332DCD2B31006C5D8D /* CodeScanner */; };
 		3265F3622DC7499E006D8BFD /* Vapor in Frameworks */ = {isa = PBXBuildFile; productRef = 3265F3612DC7499E006D8BFD /* Vapor */; };
 		F33E5C7C2DCB456C000394E0 /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = F33E5C7B2DCB456C000394E0 /* CodeScanner */; };
-		F3DFBC162DCB43C200327AAD /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = F3DFBC152DCB43C200327AAD /* CodeScanner */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +21,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		14E504402DCD1220006C5D8D /* Exceptions for "Scan" folder in "Scan" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				"Helpers/UIImage+cropAlpha.swift",
+			);
+			target = 32A7B26F2DC7BE0B0038EAF3 /* Scan */;
+		};
 		3265F3762DC74A46006D8BFD /* Exceptions for "Shared" folder in "Floor" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
@@ -29,17 +37,21 @@
 				GameTile.swift,
 				"GameTile+Train.swift",
 				"GameTile+TreePlacement.swift",
+				Group.swift,
 			);
 			target = 3265F3692DC74A3A006D8BFD /* Floor */;
 		};
 		32A7B27C2DC7BE170038EAF3 /* Exceptions for "Shared" folder in "Scan" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
+				Constants.swift,
 				GameLayout.swift,
 				GameTile.swift,
 				"GameTile+Train.swift",
 				"GameTile+TreePlacement.swift",
+				Group.swift,
 				ScanEntry.swift,
+				StudentExport.swift,
 			);
 			target = 32A7B26F2DC7BE0B0038EAF3 /* Scan */;
 		};
@@ -51,12 +63,32 @@
 				GameTile.swift,
 				"GameTile+Train.swift",
 				"GameTile+TreePlacement.swift",
+				Group.swift,
 			);
 			target = 32A7B2942DC7E5520038EAF3 /* Camera */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
+/* Begin PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
+		14E504412DCD1220006C5D8D /* Exceptions for "Scan" folder in "Copy Bundle Resources" phase from "Scan" target */ = {
+			isa = PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet;
+			buildPhase = 32A7B26E2DC7BE0B0038EAF3 /* Resources */;
+			membershipExceptions = (
+				"Helpers/UIImage+cropAlpha.swift",
+			);
+		};
+/* End PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		1461C3EB2DC90C99005F301B /* Scan */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				14E504402DCD1220006C5D8D /* Exceptions for "Scan" folder in "Scan" target */,
+				14E504412DCD1220006C5D8D /* Exceptions for "Scan" folder in "Copy Bundle Resources" phase from "Scan" target */,
+			);
+			path = Scan;
+			sourceTree = "<group>";
+		};
 		3265F3532DC74955006D8BFD /* Look Left Look Right */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = "Look Left Look Right";
@@ -75,11 +107,6 @@
 		3265F36B2DC74A3A006D8BFD /* Floor */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = Floor;
-			sourceTree = "<group>";
-		};
-		32A7B2712DC7BE0B0038EAF3 /* Scan */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = Scan;
 			sourceTree = "<group>";
 		};
 		32A7B2962DC7E5520038EAF3 /* Camera */ = {
@@ -110,7 +137,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F3DFBC162DCB43C200327AAD /* CodeScanner in Frameworks */,
+				14D2C3972DC90FB300B7BE46 /* SwiftUINFC in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -118,12 +145,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				14E505342DCD2B31006C5D8D /* CodeScanner in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		14E503592DC91BC0006C5D8D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		3265F3482DC74955006D8BFD = {
 			isa = PBXGroup;
 			children = (
@@ -131,8 +166,8 @@
 				32A7B2962DC7E5520038EAF3 /* Camera */,
 				3265F3532DC74955006D8BFD /* Look Left Look Right */,
 				3265F36B2DC74A3A006D8BFD /* Floor */,
-				32A7B2712DC7BE0B0038EAF3 /* Scan */,
-				F33E5C7A2DCB456C000394E0 /* Frameworks */,
+				1461C3EB2DC90C99005F301B /* Scan */,
+				14E503592DC91BC0006C5D8D /* Frameworks */,
 				3265F3522DC74955006D8BFD /* Products */,
 			);
 			sourceTree = "<group>";
@@ -146,13 +181,6 @@
 				32A7B2952DC7E5520038EAF3 /* Camera.app */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		F33E5C7A2DCB456C000394E0 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -218,11 +246,11 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				32A7B2712DC7BE0B0038EAF3 /* Scan */,
+				1461C3EB2DC90C99005F301B /* Scan */,
 			);
 			name = Scan;
 			packageProductDependencies = (
-				F3DFBC152DCB43C200327AAD /* CodeScanner */,
+				14D2C3962DC90FB300B7BE46 /* SwiftUINFC */,
 			);
 			productName = Scan;
 			productReference = 32A7B2702DC7BE0B0038EAF3 /* Scan.app */;
@@ -245,6 +273,7 @@
 			);
 			name = Camera;
 			packageProductDependencies = (
+				14E505332DCD2B31006C5D8D /* CodeScanner */,
 			);
 			productName = Camera;
 			productReference = 32A7B2952DC7E5520038EAF3 /* Camera.app */;
@@ -285,6 +314,7 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				3265F3602DC7499E006D8BFD /* XCRemoteSwiftPackageReference "vapor" */,
+				14D2C3952DC90FB300B7BE46 /* XCRemoteSwiftPackageReference "SwiftUINFC" */,
 				F3DFBC142DCB43C200327AAD /* XCRemoteSwiftPackageReference "CodeScanner" */,
 			);
 			preferredProjectObjectVersion = 77;
@@ -605,11 +635,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Scan/Scan.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = XL5JK4F896;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NFCReaderUsageDescription = "For scanning student badges";
+				INFOPLIST_KEY_NSCameraUsageDescription = "To scan for student faces so they can be run over";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -635,11 +668,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Scan/Scan.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = XL5JK4F896;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NFCReaderUsageDescription = "For scanning student badges";
+				INFOPLIST_KEY_NSCameraUsageDescription = "To scan for student faces so they can be run over";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -773,6 +809,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		14D2C3952DC90FB300B7BE46 /* XCRemoteSwiftPackageReference "SwiftUINFC" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/swiftinsg/SwiftUINFC.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		3265F3602DC7499E006D8BFD /* XCRemoteSwiftPackageReference "vapor" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/vapor/vapor";
@@ -792,17 +836,22 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		14D2C3962DC90FB300B7BE46 /* SwiftUINFC */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 14D2C3952DC90FB300B7BE46 /* XCRemoteSwiftPackageReference "SwiftUINFC" */;
+			productName = SwiftUINFC;
+		};
+		14E505332DCD2B31006C5D8D /* CodeScanner */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F3DFBC142DCB43C200327AAD /* XCRemoteSwiftPackageReference "CodeScanner" */;
+			productName = CodeScanner;
+		};
 		3265F3612DC7499E006D8BFD /* Vapor */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 3265F3602DC7499E006D8BFD /* XCRemoteSwiftPackageReference "vapor" */;
 			productName = Vapor;
 		};
 		F33E5C7B2DCB456C000394E0 /* CodeScanner */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = F3DFBC142DCB43C200327AAD /* XCRemoteSwiftPackageReference "CodeScanner" */;
-			productName = CodeScanner;
-		};
-		F3DFBC152DCB43C200327AAD /* CodeScanner */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = F3DFBC142DCB43C200327AAD /* XCRemoteSwiftPackageReference "CodeScanner" */;
 			productName = CodeScanner;
