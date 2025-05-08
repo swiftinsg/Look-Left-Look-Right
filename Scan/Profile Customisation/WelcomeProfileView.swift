@@ -65,9 +65,9 @@ struct WelcomeProfileView: View {
                         model.takenImage = nil
                     }
                     Button("Start Game") {
-                        var sendData = ScanEntry(student: student)
-                        if let image = model.takenImage {
-                            Task {
+                        Task {
+                            var sendData = ScanEntry(student: student)
+                            if let image = model.takenImage {
                                 do {
                                     sendData.image = try await image.exported(as: .png)
                                 } catch {
@@ -75,33 +75,31 @@ struct WelcomeProfileView: View {
                                 }
                             }
                             
-                        }
-                        
-                        var urlRequest = URLRequest(url: URL(string: "http://\(ip.self):8080/scan")!)
-                        let jsonEncoder = JSONEncoder()
-                        jsonEncoder.outputFormatting = [.withoutEscapingSlashes]
-                        let json = try! jsonEncoder.encode(sendData)
-                        print(String(data: json, encoding: .utf8)!)
-                        urlRequest.httpBody = json
-                        urlRequest.httpMethod = "POST"
-                        urlRequest.timeoutInterval = 1
-                        urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
-                        appState = .loading
-                        URLSession.shared.dataTask(with: urlRequest) { data, _, error in
-                            if let error {
-                                print(error.localizedDescription)
+                            var urlRequest = URLRequest(url: URL(string: "http://\(ip.self):8080/scan")!)
+                            let jsonEncoder = JSONEncoder()
+                            jsonEncoder.outputFormatting = [.withoutEscapingSlashes]
+                            let json = try! jsonEncoder.encode(sendData)
+                            print(String(data: json, encoding: .utf8)!)
+                            urlRequest.httpBody = json
+                            urlRequest.httpMethod = "POST"
+                            urlRequest.timeoutInterval = 1
+                            urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
+                            appState = .loading
+                            
+                            guard let (data, _) = try? await URLSession.shared.data(for: urlRequest) else {
+                                print("big l")
                                 appState = .error
                                 return
                             }
-                            if let data {
-                                let response = String(data: data, encoding: .utf8)!
-                                if response == "goaway" {
-                                    appState = .occupied
-                                    return
-                                }
-                                appState = .start
+                            
+                            let response = String(data: data, encoding: .utf8)!
+                            
+                            if response == "goaway" {
+                                appState = .occupied
+                                return
                             }
-                        }.resume()
+                            appState = .start
+                        }
                         
                     }
                     .disabled(model.takenImage == nil)
