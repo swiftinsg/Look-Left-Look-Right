@@ -88,7 +88,13 @@ final class Server: Sendable {
                 for (index, tile) in gameLayout.tiles.enumerated() {
                     switch tile {
                     case .train(let train):
-                        trainPosition[index] = train.position(for: gameLayout.gameStartTime, currentTime: .now) ?? 10
+                        let position = train.position(for: gameLayout.gameStartTime, currentTime: .now) ?? 10
+                        trainPosition[index] = position
+                        
+                        if train.inCrashRange(for: position) && userCurrentTile == index && !isUserDead {
+                            // oopsie
+                            isUserDead = true
+                        }
                     default: continue
                     }
                 }
