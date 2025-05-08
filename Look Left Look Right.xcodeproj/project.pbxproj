@@ -8,9 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		14D2C3972DC90FB300B7BE46 /* SwiftUINFC in Frameworks */ = {isa = PBXBuildFile; productRef = 14D2C3962DC90FB300B7BE46 /* SwiftUINFC */; };
+		14E505342DCD2B31006C5D8D /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = 14E505332DCD2B31006C5D8D /* CodeScanner */; };
 		3265F3622DC7499E006D8BFD /* Vapor in Frameworks */ = {isa = PBXBuildFile; productRef = 3265F3612DC7499E006D8BFD /* Vapor */; };
 		F33E5C7C2DCB456C000394E0 /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = F33E5C7B2DCB456C000394E0 /* CodeScanner */; };
-		F3DFBC162DCB43C200327AAD /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = F3DFBC152DCB43C200327AAD /* CodeScanner */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -138,7 +138,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				14D2C3972DC90FB300B7BE46 /* SwiftUINFC in Frameworks */,
-				F3DFBC162DCB43C200327AAD /* CodeScanner in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -146,6 +145,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				14E505342DCD2B31006C5D8D /* CodeScanner in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -181,13 +181,6 @@
 				32A7B2952DC7E5520038EAF3 /* Camera.app */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		F33E5C7A2DCB456C000394E0 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -280,6 +273,7 @@
 			);
 			name = Camera;
 			packageProductDependencies = (
+				14E505332DCD2B31006C5D8D /* CodeScanner */,
 			);
 			productName = Camera;
 			productReference = 32A7B2952DC7E5520038EAF3 /* Camera.app */;
@@ -847,17 +841,17 @@
 			package = 14D2C3952DC90FB300B7BE46 /* XCRemoteSwiftPackageReference "SwiftUINFC" */;
 			productName = SwiftUINFC;
 		};
+		14E505332DCD2B31006C5D8D /* CodeScanner */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F3DFBC142DCB43C200327AAD /* XCRemoteSwiftPackageReference "CodeScanner" */;
+			productName = CodeScanner;
+		};
 		3265F3612DC7499E006D8BFD /* Vapor */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 3265F3602DC7499E006D8BFD /* XCRemoteSwiftPackageReference "vapor" */;
 			productName = Vapor;
 		};
 		F33E5C7B2DCB456C000394E0 /* CodeScanner */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = F3DFBC142DCB43C200327AAD /* XCRemoteSwiftPackageReference "CodeScanner" */;
-			productName = CodeScanner;
-		};
-		F3DFBC152DCB43C200327AAD /* CodeScanner */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = F3DFBC142DCB43C200327AAD /* XCRemoteSwiftPackageReference "CodeScanner" */;
 			productName = CodeScanner;
