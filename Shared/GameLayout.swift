@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct GameLayout {
+struct GameLayout: Codable {
     
     var gameStartTime: Date = .now
     var tiles: [GameTile]
@@ -37,6 +37,26 @@ struct GameLayout {
         }
         
         return .init(tiles: tiles.reversed())
+    }
+    
+    init(tiles: [GameTile]) {
+        self.tiles = tiles
+    }
+    
+    init(from decoder: any Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        if let gameStartTime = try? container.decode(Date.self, forKey: .gameStartTime) {
+            self.gameStartTime = gameStartTime
+        } else {
+            let dateString = try container.decode(String.self, forKey: .gameStartTime)
+            if let date = ISO8601DateFormatter().date(from: dateString) {
+                self.gameStartTime = date
+            } else {
+                throw DecodingError.dataCorrupted(DecodingError.Context(codingPath: decoder.codingPath, debugDescription: "Invalid date format"))
+            }
+        }
+        
+        self.tiles = try container.decode([GameTile].self, forKey: .tiles)
     }
 }
 

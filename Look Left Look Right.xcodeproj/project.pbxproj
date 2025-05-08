@@ -31,6 +31,7 @@
 		3265F3762DC74A46006D8BFD /* Exceptions for "Shared" folder in "Floor" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
+				CameraHeartbeatResponse.swift,
 				Constants.swift,
 				Floor.swift,
 				GameLayout.swift,
@@ -44,6 +45,7 @@
 		32A7B27C2DC7BE170038EAF3 /* Exceptions for "Shared" folder in "Scan" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
+				CameraHeartbeatResponse.swift,
 				Constants.swift,
 				GameLayout.swift,
 				GameTile.swift,
@@ -58,6 +60,7 @@
 		32A7B2AE2DC7EE200038EAF3 /* Exceptions for "Shared" folder in "Camera" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
+				CameraHeartbeatResponse.swift,
 				Constants.swift,
 				GameLayout.swift,
 				GameTile.swift,

@@ -24,7 +24,11 @@ final class Server: Sendable {
     
     var gameLayout = GameLayout.random()
     
-    var isGameIdle: Bool = true
+    var currentUser: ScanEntry?
+    
+    var isUserDead: Bool = false
+    
+    var needsToResendGameLayoutInHeartbeat = true
     
     init() {
         floorTiles = (0..<9).map {
@@ -53,6 +57,23 @@ final class Server: Sendable {
             return try await self.onScanReceived(request: req) ? "hello alumni" : "goaway"
         }
         
+        app.on(.GET, "hello") { req in
+            if await self.needsToResendGameLayoutInHeartbeat {
+                await MainActor.run {
+                    self.needsToResendGameLayoutInHeartbeat = false
+                }
+                
+                return await CameraHeartbeatResponse(gameLayout: self.gameLayout,
+                                                     userFace: self.currentUser?.image,
+                                                     isUserDead: self.isUserDead,
+                                                     playerPosition: self.userCurrentTile)
+            } else {
+                return await CameraHeartbeatResponse(gameLayout: nil,
+                                                     userFace: nil,
+                                                     isUserDead: self.isUserDead,
+                                                     playerPosition: self.userCurrentTile)
+            }
+        }
         
         try! await app.execute()
     }
@@ -60,7 +81,7 @@ final class Server: Sendable {
     func updateTrainPositions() {
         Task {
             while true {
-                try await Task.sleep(for: .seconds(0.01))
+                try await Task.sleep(for: .seconds(0.015))
                 
                 var trainPosition: [Int: Double] = [:]
                 
@@ -88,11 +109,14 @@ final class Server: Sendable {
     func onScanReceived(request: Request) async throws -> Bool {
         let scanEntry = try request.content.decode(ScanEntry.self)
         
-        guard isGameIdle else {
+        guard currentUser == nil else {
             return false
         }
         
-        isGameIdle = false
+        self.currentUser = scanEntry
+        self.gameLayout = .random()
+        self.isUserDead = false
+        self.needsToResendGameLayoutInHeartbeat = true
         
         return true
     }

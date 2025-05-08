@@ -20,6 +20,9 @@ struct ContentView: View {
                 gameManager.setUpLayout(.random())
             }
         }
+        .task {
+            await gameManager.startHeartbeatMessages()
+        }
     }
 }
 
