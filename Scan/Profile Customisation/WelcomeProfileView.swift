@@ -18,64 +18,113 @@ struct WelcomeProfileView: View {
             VStack {
                 if let image = model.viewfinderImage {
                     if let faceImage = model.takenImage {
-                        faceImage
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 300, height: 300)
-                    } else {
-                        // No image taken means no face detected, just show viewfinder
-                        VStack {
-                            image
+                        ZStack {
+                            
+                            faceImage
                                 .resizable()
                                 .scaledToFit()
-                                .frame(width: 300, height: 300)
-                            Text("Make sure your face is in frame!")
-                                .font(.caption)
+                                .padding()
+                        }
+                        
+                    } else {
+                        // No image taken means no face detected, just show viewfinder
+                        ZStack {
+                            VStack {
+                                image
+                                    .resizable()
+                                    .scaledToFit()
+                                Text("Make sure your face is in frame!")
+                                    .font(.caption)
+                                    .padding()
+                                Spacer()
+                            }
+                            if let firstFaceBox = model.faceBoxes.first {
+                                Path(firstFaceBox)
+                                    .stroke(Color.red)
+                                    .onAppear {
+                                        print(firstFaceBox)
+                                    }
+                                    .overlay(imageReader())
+                            }
+                            
+                            
                         }
                         
                     }
-                    
                 }
-                    
+                if model.cropping {
+                    ProgressView {
+                        Text("Cropping the image...")
+                    }
+                }
                 Text(student.name)
                     .font(.headline)
                     .padding()
-                Button("Start Game") {
-                    let sendData = ScanEntry(student: student)
-                    var urlRequest = URLRequest(url: URL(string: "http://\(ip.self):8080/scan")!)
-                    let jsonEncoder = JSONEncoder()
-                    jsonEncoder.outputFormatting = [.withoutEscapingSlashes]
-                    let json = try! jsonEncoder.encode(sendData)
-                    print(String(data: json, encoding: .utf8)!)
-                    urlRequest.httpBody = json
-                    urlRequest.httpMethod = "POST"
-                    urlRequest.timeoutInterval = 1
-                    urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
-                    appState = .loading
-                    URLSession.shared.dataTask(with: urlRequest) { data, _, error in
-                        if let error {
-                            print(error.localizedDescription)
-                            appState = .error
-                            return
-                        }
-                        if let data {
-                            let response = String(data: data, encoding: .utf8)!
-                            if response == "goaway" {
-                                appState = .occupied
+                if model.takenImage != nil {
+                    Button("Re-take Image", role: .destructive) {
+                        model.takenImage = nil
+                    }
+                    Button("Start Game") {
+                        let sendData = ScanEntry(student: student)
+                        var urlRequest = URLRequest(url: URL(string: "http://\(ip.self):8080/scan")!)
+                        let jsonEncoder = JSONEncoder()
+                        jsonEncoder.outputFormatting = [.withoutEscapingSlashes]
+                        let json = try! jsonEncoder.encode(sendData)
+                        print(String(data: json, encoding: .utf8)!)
+                        urlRequest.httpBody = json
+                        urlRequest.httpMethod = "POST"
+                        urlRequest.timeoutInterval = 1
+                        urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
+                        appState = .loading
+                        URLSession.shared.dataTask(with: urlRequest) { data, _, error in
+                            if let error {
+                                print(error.localizedDescription)
+                                appState = .error
                                 return
                             }
-                            appState = .start
-                        }
-                    }.resume()
+                            if let data {
+                                let response = String(data: data, encoding: .utf8)!
+                                if response == "goaway" {
+                                    appState = .occupied
+                                    return
+                                }
+                                appState = .start
+                            }
+                        }.resume()
+                        
+                    }
+                    .disabled(model.takenImage == nil)
+                    .padding()
+                    .buttonStyle(.borderedProminent)
+                } else {
                     
+                    Button("Take Picture") {
+                        model.camera.takePhoto()
+                    }
+                    .disabled(model.cropping)
+                    .buttonStyle(.borderedProminent)
                 }
-                .disabled(model.takenImage == nil)
-                .padding()
-                .buttonStyle(.borderedProminent)
+                
+                
             }
             .task {
                 await model.camera.start()
             }
+        } else {
+            Text("No student!!!!")
+        }
+    }
+    
+    private func imageReader() -> some View {
+        return GeometryReader { proxy in
+            if model.displayImageSize == .zero {
+                DispatchQueue.main.async {
+                    model.displayImageSize = proxy.size
+                    // add in safe area height i think
+                    model.safeAreaOffset = proxy.frame(in: .global).minY
+                }
+            }
+            return Color.clear
         }
     }
 }

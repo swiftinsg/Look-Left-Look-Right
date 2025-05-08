@@ -19,6 +19,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		14E504402DCD1220006C5D8D /* Exceptions for "Scan" folder in "Scan" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				"Helpers/UIImage+cropAlpha.swift",
+			);
+			target = 32A7B26F2DC7BE0B0038EAF3 /* Scan */;
+		};
 		3265F3762DC74A46006D8BFD /* Exceptions for "Shared" folder in "Floor" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
@@ -57,9 +64,23 @@
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
+/* Begin PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
+		14E504412DCD1220006C5D8D /* Exceptions for "Scan" folder in "Copy Bundle Resources" phase from "Scan" target */ = {
+			isa = PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet;
+			buildPhase = 32A7B26E2DC7BE0B0038EAF3 /* Resources */;
+			membershipExceptions = (
+				"Helpers/UIImage+cropAlpha.swift",
+			);
+		};
+/* End PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		1461C3EB2DC90C99005F301B /* Scan */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				14E504402DCD1220006C5D8D /* Exceptions for "Scan" folder in "Scan" target */,
+				14E504412DCD1220006C5D8D /* Exceptions for "Scan" folder in "Copy Bundle Resources" phase from "Scan" target */,
+			);
 			path = Scan;
 			sourceTree = "<group>";
 		};

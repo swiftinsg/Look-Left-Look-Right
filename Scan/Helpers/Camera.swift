@@ -170,7 +170,6 @@ final class Camera: NSObject, Sendable {
         
         photoOutput.isHighResolutionCaptureEnabled = true
         photoOutput.maxPhotoQualityPrioritization = .quality
-        
         updateVideoOutputConnection()
         
         isCaptureSessionConfigured = true
@@ -287,7 +286,7 @@ final class Camera: NSObject, Sendable {
         if orientation == UIDeviceOrientation.unknown {
             orientation = UIScreen.main.orientation
         }
-        return orientation
+        return .portrait
     }
     
     @objc
@@ -317,7 +316,7 @@ final class Camera: NSObject, Sendable {
             }
             
             let isFlashAvailable = self.deviceInput?.device.isFlashAvailable ?? false
-            photoSettings.flashMode = isFlashAvailable ? .auto : .off
+            photoSettings.flashMode = .off
             photoSettings.isHighResolutionPhotoEnabled = true
             if let previewPhotoPixelFormatType = photoSettings.availablePreviewPhotoPixelFormatTypes.first {
                 photoSettings.previewPhotoFormat = [kCVPixelBufferPixelFormatTypeKey as String: previewPhotoPixelFormatType]
@@ -327,10 +326,9 @@ final class Camera: NSObject, Sendable {
             if let photoOutputVideoConnection = photoOutput.connection(with: .video) {
                 if photoOutputVideoConnection.isVideoOrientationSupported,
                     let videoOrientation = self.videoOrientationFor(self.deviceOrientation) {
-                    photoOutputVideoConnection.videoOrientation = videoOrientation
+                    photoOutputVideoConnection.videoOrientation = .portrait
                 }
             }
-            
             photoOutput.capturePhoto(with: photoSettings, delegate: self)
         }
     }
@@ -356,7 +354,7 @@ extension Camera: AVCaptureVideoDataOutputSampleBufferDelegate {
         
         if connection.isVideoOrientationSupported,
            let videoOrientation = videoOrientationFor(deviceOrientation) {
-            connection.videoOrientation = videoOrientation
+            connection.videoOrientation = .portrait
         }
 
         addToPreviewStream?(CIImage(cvPixelBuffer: pixelBuffer))

@@ -12,6 +12,7 @@ struct ScanView: View {
     @State var isScannerShown: Bool = false
     @State var isAlumni: Bool = false
     @State var showingProfileSheet: Bool = false
+    @State var isTest: Bool = false
     @Binding var ipAddress: String
     var students: [StudentExport]
     @State var scannedStudent: StudentExport?
@@ -43,6 +44,18 @@ struct ScanView: View {
                 .padding()
             }
             .buttonStyle(.borderedProminent)
+            Button {
+                scannedStudent = .init(uuid: UUID(), indexNumber: "AM01", name: "Test student")
+                showingProfileSheet = true
+            } label: {
+                VStack {
+                    Image(systemName: "gear")
+                        .imageScale(.large)
+                    Text("Test")
+                }
+                .padding()
+            }
+            .buttonStyle(.borderedProminent)
         }
         .nfcReader(isPresented: $isScannerShown) { messages in
             guard let message = messages.first,
@@ -66,8 +79,12 @@ struct ScanView: View {
         .fullScreenCover(isPresented: $showingProfileSheet) {
             // clear scanned student
             scannedStudent = nil
+            isTest = false
         } content: {
-            StartGameView(student: $scannedStudent, ip: ipAddress)
+
+                StartGameView(student: $scannedStudent, ip: ipAddress)
+
+             
         }
 
     }
