@@ -14,27 +14,45 @@ struct ScanView: View {
     @State var showingProfileSheet: Bool = false
     @State var isTest: Bool = false
     @Binding var ipAddress: String
+    @State var appState: AppState = .profileSetup
     var students: [StudentExport]
     @State var scannedStudent: StudentExport?
     
     var body: some View {
-        VStack {
-            Button {
-                isScannerShown = true
-            } label: {
-                VStack {
-                    Image(systemName: "person")
-                        .imageScale(.large)
-                    Text("Student")
+        HStack {
+            VStack {
+                Button {
+                    isScannerShown = true
+                } label: {
+                    VStack {
+                        Image(systemName: "barcode.viewfinder")
+                            .imageScale(.large)
+                        Text("Scan")
+                    }
+                    .padding()
+                    
                 }
                 .padding()
+                .buttonStyle(.borderedProminent)
+                Button {
+                    appState = .selectStudent
+                    showingProfileSheet = true
+                } label: {
+                    VStack {
+                        Image(systemName: "person")
+                            .imageScale(.large)
+                        Text("Select Name")
+                    }
+                    .padding()
+                    
+                }
+                .padding()
+                .buttonStyle(.borderedProminent)
                 
             }
-            .padding()
-            .buttonStyle(.borderedProminent)
             Button {
-                isScannerShown = true
-                isAlumni = true
+                showingProfileSheet = true
+                appState = .manualInput
             } label: {
                 VStack {
                     Image(systemName: "graduationcap")
@@ -44,18 +62,18 @@ struct ScanView: View {
                 .padding()
             }
             .buttonStyle(.borderedProminent)
-            Button {
-                scannedStudent = .init(uuid: UUID(), indexNumber: "AM01", name: "Test student")
-                showingProfileSheet = true
-            } label: {
-                VStack {
-                    Image(systemName: "gear")
-                        .imageScale(.large)
-                    Text("Test")
-                }
-                .padding()
-            }
-            .buttonStyle(.borderedProminent)
+            //            Button {
+            //                scannedStudent = .init(uuid: UUID(), indexNumber: "AM01", name: "Test student")
+            //                showingProfileSheet = true
+            //            } label: {
+            //                VStack {
+            //                    Image(systemName: "gear")
+            //                        .imageScale(.large)
+            //                    Text("Test")
+            //                }
+            //                .padding()
+            //            }
+            //            .buttonStyle(.borderedProminent)
         }
         .nfcReader(isPresented: $isScannerShown) { messages in
             guard let message = messages.first,
@@ -81,12 +99,11 @@ struct ScanView: View {
             scannedStudent = nil
             isTest = false
         } content: {
-
-                StartGameView(student: $scannedStudent, ip: ipAddress)
-
-             
+            StartGameView(student: $scannedStudent, appState: $appState, ip: ipAddress)
+            
+            
         }
-
+        
     }
     
 }

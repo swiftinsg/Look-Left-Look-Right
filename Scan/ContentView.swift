@@ -14,21 +14,11 @@ struct ContentView: View {
         if ipAddress == "" {
             EnterIPView(ip: $ipAddress)
         } else {
-            TabView {
-                Tab {
-                    ScanView(ipAddress: $ipAddress, students: students)
-                } label: {
-                    Label("Scan", systemImage: "barcode.viewfinder")
-                }
-                Tab {
-                    StudentsView(students: students)
-                } label: {
-                    Label("Students", systemImage: "person")
-                }
-                
-            }
+            ScanView(ipAddress: $ipAddress, students: students)
+            
         }
-        
     }
+    
 }
+
 

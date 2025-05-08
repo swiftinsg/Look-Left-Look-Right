@@ -65,7 +65,18 @@ struct WelcomeProfileView: View {
                         model.takenImage = nil
                     }
                     Button("Start Game") {
-                        let sendData = ScanEntry(student: student)
+                        var sendData = ScanEntry(student: student)
+                        if let image = model.takenImage {
+                            Task {
+                                do {
+                                    sendData.image = try await image.exported(as: .png)
+                                } catch {
+                                    print(error.localizedDescription)
+                                }
+                            }
+                            
+                        }
+                        
                         var urlRequest = URLRequest(url: URL(string: "http://\(ip.self):8080/scan")!)
                         let jsonEncoder = JSONEncoder()
                         jsonEncoder.outputFormatting = [.withoutEscapingSlashes]
@@ -109,6 +120,9 @@ struct WelcomeProfileView: View {
             }
             .task {
                 await model.camera.start()
+            }
+            .onDisappear {
+                model.camera.stop()
             }
         } else {
             Text("No student!!!!")

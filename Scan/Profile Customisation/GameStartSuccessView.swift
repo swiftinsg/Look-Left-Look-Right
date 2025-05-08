@@ -14,7 +14,8 @@ struct GameStartSuccessView: View {
         if let student {
             
             VStack {
-                Text("Please head in, \(student.name).")
+                Text("Please head in, **\(student.name)**.")
+                    .font(.headline)
                     .padding()
                     .task {
                         try! await Task.sleep(for: .seconds(5))
