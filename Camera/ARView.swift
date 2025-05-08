@@ -24,7 +24,7 @@ struct ARView: UIViewRepresentable {
         
         configuration.isLightEstimationEnabled = true
         
-        view.delegate = context.coordinator
+        view.delegate = gameManager
         
         view.session.run(configuration)
         

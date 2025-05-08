@@ -6,14 +6,20 @@
 //
 
 import SwiftUI
+import RegexBuilder
 
 struct ContentView: View {
     
     @State private var gameManager = GameManager()
     
     var body: some View {
-        ARView(gameManager: gameManager)
-            .ignoresSafeArea()
+        ZStack {
+            ARView(gameManager: gameManager)
+                .ignoresSafeArea()
+            Button("Simulate Layout Load") {
+                gameManager.setUpLayout(.random())
+            }
+        }
     }
 }
 

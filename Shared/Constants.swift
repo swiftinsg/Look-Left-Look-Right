@@ -51,4 +51,7 @@ enum Constants: Sendable {
     static var crashRange: ClosedRange<Double> {
         totalWidth / 2 - playableWidth / 2 ... (totalWidth - (totalWidth / 2 - playableWidth / 2))
     }
+    
+    // In meters
+    static let imageAnchorWidth: Double = 0.25
 }
