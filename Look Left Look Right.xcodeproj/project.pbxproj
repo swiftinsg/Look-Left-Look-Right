@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		14D2C3972DC90FB300B7BE46 /* SwiftUINFC in Frameworks */ = {isa = PBXBuildFile; productRef = 14D2C3962DC90FB300B7BE46 /* SwiftUINFC */; };
 		3265F3622DC7499E006D8BFD /* Vapor in Frameworks */ = {isa = PBXBuildFile; productRef = 3265F3612DC7499E006D8BFD /* Vapor */; };
+		F33E5C7C2DCB456C000394E0 /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = F33E5C7B2DCB456C000394E0 /* CodeScanner */; };
+		F3DFBC162DCB43C200327AAD /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = F3DFBC152DCB43C200327AAD /* CodeScanner */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -127,6 +129,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F33E5C7C2DCB456C000394E0 /* CodeScanner in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -135,6 +138,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				14D2C3972DC90FB300B7BE46 /* SwiftUINFC in Frameworks */,
+				F3DFBC162DCB43C200327AAD /* CodeScanner in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -177,6 +181,13 @@
 				32A7B2952DC7E5520038EAF3 /* Camera.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		F33E5C7A2DCB456C000394E0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -223,6 +234,7 @@
 			);
 			name = Floor;
 			packageProductDependencies = (
+				F33E5C7B2DCB456C000394E0 /* CodeScanner */,
 			);
 			productName = Floor;
 			productReference = 3265F36A2DC74A3A006D8BFD /* Floor.app */;
@@ -309,6 +321,7 @@
 			packageReferences = (
 				3265F3602DC7499E006D8BFD /* XCRemoteSwiftPackageReference "vapor" */,
 				14D2C3952DC90FB300B7BE46 /* XCRemoteSwiftPackageReference "SwiftUINFC" */,
+				F3DFBC142DCB43C200327AAD /* XCRemoteSwiftPackageReference "CodeScanner" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 3265F3522DC74955006D8BFD /* Products */;
@@ -570,12 +583,13 @@
 				DEVELOPMENT_TEAM = XL5JK4F896;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = please;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 18.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -600,12 +614,13 @@
 				DEVELOPMENT_TEAM = XL5JK4F896;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = please;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 18.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -816,6 +831,14 @@
 				minimumVersion = 4.114.1;
 			};
 		};
+		F3DFBC142DCB43C200327AAD /* XCRemoteSwiftPackageReference "CodeScanner" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/twostraws/CodeScanner";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.5.2;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -828,6 +851,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 3265F3602DC7499E006D8BFD /* XCRemoteSwiftPackageReference "vapor" */;
 			productName = Vapor;
+		};
+		F33E5C7B2DCB456C000394E0 /* CodeScanner */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F3DFBC142DCB43C200327AAD /* XCRemoteSwiftPackageReference "CodeScanner" */;
+			productName = CodeScanner;
+		};
+		F3DFBC152DCB43C200327AAD /* CodeScanner */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F3DFBC142DCB43C200327AAD /* XCRemoteSwiftPackageReference "CodeScanner" */;
+			productName = CodeScanner;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
