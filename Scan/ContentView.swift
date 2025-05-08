@@ -6,19 +6,19 @@
 //
 
 import SwiftUI
-
 struct ContentView: View {
+    
+    @State var ipAddress: String = ""
+    @State var students: [StudentExport] = StudentExport.sampleData
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        if ipAddress == "" {
+            EnterIPView(ip: $ipAddress)
+        } else {
+            ScanView(ipAddress: $ipAddress, students: students)
+            
         }
-        .padding()
     }
+    
 }
 
-#Preview {
-    ContentView()
-}
+
