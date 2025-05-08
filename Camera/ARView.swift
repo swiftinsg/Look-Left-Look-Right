@@ -25,6 +25,8 @@ struct ARView: UIViewRepresentable {
         configuration.isLightEstimationEnabled = true
         configuration.environmentTexturing = .automatic
         
+        configuration.frameSemantics.insert(.personSegmentationWithDepth)
+        
         view.delegate = gameManager
         
         view.session.run(configuration)

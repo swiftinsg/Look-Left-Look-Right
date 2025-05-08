@@ -47,8 +47,11 @@ struct ContentView: View {
                         Text("game layout")
                             .font(.title)
                         Spacer()
-                        Button("regenerate") {
+                        Button("end game / regenerate") {
+                            server.currentUser = nil
                             server.gameLayout = .random()
+                            server.isUserDead = false
+                            server.needsToResendGameLayoutInHeartbeat = true
                         }
                     }
                     GameLayoutPreviewView()
