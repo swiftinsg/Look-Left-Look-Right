@@ -14,9 +14,14 @@ struct StudentsView: View {
     var body: some View {
         NavigationStack {
             List(students, id: \.uuid) { student in
+                
                 Button {
                     selectedStudent = student
-                    appState = .profileSetup
+                    withAnimation {
+                        
+                        appState = .profileSetup
+                    }
+                    
                 } label: {
                     VStack {
                         Text(student.name)

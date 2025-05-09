@@ -16,6 +16,12 @@ struct ScanEntry: Codable {
         // index number is in AM01 format - AM for session, 01 for number
         var group = Group(session: .afternoon, groupNumber: 1)
         let session = index[index.startIndex]
+        if index.count != 4 {
+            group.isAlumni = true
+            group.session = .morning
+            group.groupNumber = Int.max
+            return group
+        }
         if let number = Int(index[index.index(index.startIndex, offsetBy: 2)...index.endIndex]) {
             if session == "A" {
                 group.session = .morning

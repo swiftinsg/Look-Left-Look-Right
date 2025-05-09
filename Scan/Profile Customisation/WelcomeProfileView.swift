@@ -11,7 +11,7 @@ struct WelcomeProfileView: View {
     @Binding var student: StudentExport?
     @Binding var appState: AppState
     
-    @StateObject private var model = DataModel()
+    @Environment(DataModel.self) private var model
     var ip: String
     var body: some View {
         if let student {
@@ -116,11 +116,14 @@ struct WelcomeProfileView: View {
                 
             }
             .task {
-                await model.camera.start()
+                print(model.camera.isRunning)
+                if !model.camera.isRunning {
+                    print("camera start called")
+                    await model.camera.start()
+                }
+                
             }
-            .onDisappear {
-                model.camera.stop()
-            }
+
         } else {
             Text("No student!!!!")
         }
