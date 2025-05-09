@@ -17,6 +17,8 @@ struct ContentView: View {
             ARView(gameManager: gameManager)
                 .ignoresSafeArea()
         }
+        .persistentSystemOverlays(.hidden)
+        .statusBarHidden()
         .task {
             await gameManager.startHeartbeatMessages()
         }
