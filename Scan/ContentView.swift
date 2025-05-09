@@ -15,10 +15,8 @@ struct ContentView: View {
             EnterIPView(ip: $ipAddress)
         } else {
             ScanView(ipAddress: $ipAddress, students: students)
-            
         }
     }
-    
 }
 
 

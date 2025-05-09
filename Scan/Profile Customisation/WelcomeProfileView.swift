@@ -19,7 +19,6 @@ struct WelcomeProfileView: View {
                 if let image = model.viewfinderImage {
                     if let faceImage = model.takenImage {
                         ZStack {
-                            
                             faceImage
                                 .resizable()
                                 .scaledToFit()

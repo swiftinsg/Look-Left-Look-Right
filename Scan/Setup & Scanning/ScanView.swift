@@ -19,21 +19,22 @@ struct ScanView: View {
     @State var scannedStudent: StudentExport?
     
     var body: some View {
-        HStack {
-            VStack {
-                Button {
-                    isScannerShown = true
-                } label: {
-                    VStack {
-                        Image(systemName: "barcode.viewfinder")
-                            .imageScale(.large)
-                        Text("Scan")
-                    }
-                    .padding()
-                    
+        VStack {
+            Button {
+                isScannerShown = true
+            } label: {
+                VStack {
+                    Image(systemName: "iphone.gen3.crop.circle")
+                        .imageScale(.large)
+                    Text("Scan")
                 }
                 .padding()
-                .buttonStyle(.borderedProminent)
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+            }
+            .buttonStyle(.borderedProminent)
+            .buttonBorderShape(.roundedRectangle(radius: 8))
+            
+            HStack {
                 Button {
                     appState = .selectStudent
                     showingProfileSheet = true
@@ -44,24 +45,25 @@ struct ScanView: View {
                         Text("Select Name")
                     }
                     .padding()
-                    
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
                 }
-                .padding()
-                .buttonStyle(.borderedProminent)
                 
-            }
-            Button {
-                showingProfileSheet = true
-                appState = .manualInput
-            } label: {
-                VStack {
-                    Image(systemName: "graduationcap")
-                        .imageScale(.large)
-                    Text("Alumni")
+                Button {
+                    showingProfileSheet = true
+                    appState = .manualInput
+                } label: {
+                    VStack {
+                        Image(systemName: "graduationcap")
+                            .imageScale(.large)
+                        Text("Alumni")
+                    }
+                    .padding()
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
                 }
-                .padding()
             }
-            .buttonStyle(.borderedProminent)
+            .buttonStyle(.bordered)
+            .buttonBorderShape(.roundedRectangle(radius: 8))
+            
             //            Button {
             //                scannedStudent = .init(uuid: UUID(), indexNumber: "AM01", name: "Test student")
             //                showingProfileSheet = true
@@ -75,6 +77,8 @@ struct ScanView: View {
             //            }
             //            .buttonStyle(.borderedProminent)
         }
+        .font(.title)
+        .padding()
         .nfcReader(isPresented: $isScannerShown) { messages in
             guard let message = messages.first,
                   let record = message.records.first, let studentUUID = UUID(uuidString: String(decoding: record.payload, as: UTF8.self)) else {
@@ -100,10 +104,7 @@ struct ScanView: View {
             isTest = false
         } content: {
             StartGameView(student: $scannedStudent, appState: $appState, ip: ipAddress)
-            
-            
         }
-        
     }
     
 }

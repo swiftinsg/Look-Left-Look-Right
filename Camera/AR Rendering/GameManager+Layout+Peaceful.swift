@@ -56,9 +56,9 @@ extension GameManager {
         treeNode.addChildNode(createTreeLeafLayer(index: 2))
         
         if placement == .left {
-            treeNode.position.x = Float(-Constants.totalWidth / 2 + 0.3)
-        } else {
             treeNode.position.x = Float(Constants.totalWidth / 2 - 0.3)
+        } else {
+            treeNode.position.x = Float(-Constants.totalWidth / 2 + 0.3)
         }
         
         return treeNode

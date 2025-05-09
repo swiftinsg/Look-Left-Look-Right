@@ -31,7 +31,7 @@ enum Constants: Sendable {
     static let playableWidth: Double = 0.5
     
     // Outside of this bounds, walls will be created
-    static let totalWidth: Double = 2.5
+    static let totalWidth: Double = 2
     
     // In meters
     static let height: Double = 4.5

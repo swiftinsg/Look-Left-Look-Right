@@ -14,7 +14,7 @@ struct GameStartSuccessView: View {
         if let student {
             
             VStack {
-                Text("Please head in, **\(student.name)**.")
+                Text("Hello **\(student.name)**!")
                     .font(.headline)
                     .padding()
                     .task {
