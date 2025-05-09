@@ -76,4 +76,12 @@ struct ScanEntry: Codable {
     }
 }
 
+#if os(macOS)
+import AppKit
 
+extension ScanEntry {
+    func toImage() -> NSImage {
+        NSImage(data: image)!
+    }
+}
+#endif

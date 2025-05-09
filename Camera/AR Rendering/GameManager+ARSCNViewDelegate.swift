@@ -33,7 +33,6 @@ extension GameManager: ARSCNViewDelegate {
                 
                 guard let trainNode = trainNodes[index] else { continue }
                 
-                #warning("need to verify")
                 trainNode.position = SCNVector3(0.75 - position,
                                                 Constants.trainCarHeight / 2 + Constants.sleeperHeight,
                                                 0)

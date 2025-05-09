@@ -15,4 +15,16 @@ struct LeaderboardItem: Identifiable, Equatable {
     var image: Data
     var group: Group
     var timing: Int
+    
+    
 }
+
+#if canImport(AppKit)
+import AppKit
+
+extension LeaderboardItem {
+    var nsImage: NSImage {
+        NSImage(data: image)!
+    }
+}
+#endif
