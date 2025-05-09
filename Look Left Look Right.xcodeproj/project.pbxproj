@@ -39,6 +39,7 @@
 				"GameTile+Train.swift",
 				"GameTile+TreePlacement.swift",
 				Group.swift,
+				LeaderboardItem.swift,
 			);
 			target = 3265F3692DC74A3A006D8BFD /* Floor */;
 		};
@@ -52,6 +53,7 @@
 				"GameTile+Train.swift",
 				"GameTile+TreePlacement.swift",
 				Group.swift,
+				LeaderboardItem.swift,
 				ScanEntry.swift,
 				StudentExport.swift,
 			);
@@ -67,6 +69,7 @@
 				"GameTile+Train.swift",
 				"GameTile+TreePlacement.swift",
 				Group.swift,
+				LeaderboardItem.swift,
 			);
 			target = 32A7B2942DC7E5520038EAF3 /* Camera */;
 		};

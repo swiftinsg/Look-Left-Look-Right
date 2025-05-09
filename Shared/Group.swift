@@ -6,9 +6,9 @@
 //
 
 
-struct Group: Codable, CustomStringConvertible{
-    
-    enum Session: String, Codable {
+struct Group: Codable, CustomStringConvertible, Equatable {
+
+    enum Session: String, Codable, Equatable {
         case morning = "AM"
         case afternoon = "PM"
     }

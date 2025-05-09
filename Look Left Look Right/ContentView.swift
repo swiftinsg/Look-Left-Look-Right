@@ -9,8 +9,9 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @State private var server = Server()
-    
+    @Environment(Server.self) private var server
+    @Environment(\.openWindow) private var openWindow
+
     var body: some View {
         NavigationStack {
             HSplitView {
@@ -47,10 +48,14 @@ struct ContentView: View {
                         Text("game layout")
                             .font(.title)
                         Spacer()
+                        Button("open leaderboard") {
+                            openWindow(id: "leaderboard")
+                        }
                         Button("end game / regenerate") {
                             server.currentUser = nil
                             server.gameLayout = .random()
                             server.isUserDead = false
+                            server.isGameFinished = false
                             server.needsToResendGameLayoutInHeartbeat = true
                         }
                     }

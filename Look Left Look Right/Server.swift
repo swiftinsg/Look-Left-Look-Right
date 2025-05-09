@@ -5,7 +5,7 @@
 //  Created by Jia Chen Yee on 5/4/25.
 //
 
-import Foundation
+import SwiftUI
 import Observation
 import Vapor
 
@@ -27,9 +27,26 @@ final class Server: Sendable {
     var currentUser: ScanEntry?
     
     var isUserDead: Bool = false
-    
+    var isGameFinished: Bool = false
+
     var needsToResendGameLayoutInHeartbeat = true
-    
+
+    var leaderboard: [LeaderboardItem] = [
+        LeaderboardItem(index: "ABC", name: "tristan", image: Data(), group: Group(session: .morning, groupNumber: 1), timing: 5),
+        LeaderboardItem(index: "ABC", name: "tristan", image: Data(), group: Group(session: .morning, groupNumber: 1), timing: 5),
+        LeaderboardItem(index: "ABC", name: "tristan", image: Data(), group: Group(session: .morning, groupNumber: 1), timing: 5),
+        LeaderboardItem(index: "ABC", name: "tristan", image: Data(), group: Group(session: .morning, groupNumber: 1), timing: 5),
+        LeaderboardItem(index: "ABC", name: "tristan", image: Data(), group: Group(session: .morning, groupNumber: 1), timing: 5),
+        LeaderboardItem(index: "ABC", name: "tristan", image: Data(), group: Group(session: .morning, groupNumber: 1), timing: 5),
+        LeaderboardItem(index: "ABC", name: "tristan", image: Data(), group: Group(session: .morning, groupNumber: 1), timing: 5),
+        LeaderboardItem(index: "ABC", name: "tristan", image: Data(), group: Group(session: .morning, groupNumber: 1), timing: 5),
+        LeaderboardItem(index: "ABC", name: "tristan", image: Data(), group: Group(session: .morning, groupNumber: 1), timing: 5),
+        LeaderboardItem(index: "ABC", name: "tristan", image: Data(), group: Group(session: .morning, groupNumber: 1), timing: 5),
+        LeaderboardItem(index: "ABC", name: "tristan", image: Data(), group: Group(session: .morning, groupNumber: 1), timing: 5),
+        LeaderboardItem(index: "ABC", name: "tristan", image: Data(), group: Group(session: .morning, groupNumber: 1), timing: 5),
+        LeaderboardItem(index: "ABC", name: "tristan", image: Data(), group: Group(session: .morning, groupNumber: 1), timing: 5)
+    ]
+
     init() {
         floorTiles = (0..<9).map {
             Floor(index: $0, gotHuman: false, date: .distantPast)
@@ -122,8 +139,30 @@ final class Server: Sendable {
         self.currentUser = scanEntry
         self.gameLayout = .random()
         self.isUserDead = false
+        self.isGameFinished = false
         self.needsToResendGameLayoutInHeartbeat = true
         
         return true
+    }
+
+    func appendToLeaderboard(index: String, name: String, image: Data, group: Group, timing: Int) {
+        let newItem = LeaderboardItem(
+            index: index,
+            name: name,
+            image: image,
+            group: group,
+            timing: timing
+        )
+
+        if leaderboard.map({ $0.index }).contains(index) {
+            if let index = leaderboard.firstIndex(where: { $0.index == index }) {
+                leaderboard[index] = newItem
+            }
+        } else {
+            leaderboard.append(newItem)
+        }
+        withAnimation {
+            leaderboard = leaderboard.sorted(by: { $0.name < $1.name }).sorted(by: { $0.timing < $1.timing })
+        }
     }
 }

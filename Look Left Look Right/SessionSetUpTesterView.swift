@@ -35,6 +35,7 @@ struct SessionSetUpTesterView: View {
                     server.currentUser = ScanEntry(date: .now, id: UUID().uuidString, index: index, name: name, image: try! await Image(.bryegg).exported(as: .png))
                     server.gameLayout = .random()
                     server.isUserDead = false
+                    server.isGameFinished = false
                     server.needsToResendGameLayoutInHeartbeat = true
                     
                     name = ""
