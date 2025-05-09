@@ -51,6 +51,10 @@ struct ContentView: View {
                         Button("open leaderboard") {
                             openWindow(id: "leaderboard")
                         }
+                        Button("show leaderboard again") {
+                            server.currentUser = nil
+                            server.isUserDead = false
+                        }
                         Button("end game / regenerate") {
                             server.currentUser = nil
                             server.gameLayout = .random()
