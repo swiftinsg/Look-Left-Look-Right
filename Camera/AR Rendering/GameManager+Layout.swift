@@ -12,6 +12,8 @@ import ARKit
 extension GameManager {
     func setUpLayout(_ layout: GameLayout) {
         trainNodes = [:]
+        trainTrackNodes = [:]
+        transparencyNodes = [:]
         
         self.layout = layout
         

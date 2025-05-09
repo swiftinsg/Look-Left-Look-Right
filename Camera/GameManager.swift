@@ -20,6 +20,7 @@ final class GameManager: NSObject, Sendable {
     var layout: GameLayout?
     
     var trainNodes: [Int: SCNNode] = [:]
+    var trainTrackNodes: [Int: SCNNode] = [:]
     
     var ipAddress = "192.168.18.193"
     
@@ -30,6 +31,7 @@ final class GameManager: NSObject, Sendable {
     var transparencyNodes: [Int: [SCNNode]] = [:]
     
     var isUserDead = false
+    var deathMessage = "L BOZO"
     
     func startHeartbeatMessages() async {
         while true {
@@ -51,11 +53,35 @@ final class GameManager: NSObject, Sendable {
                 
                 updateNodeAlpha(newPlayerPosition: result.playerPosition)
                 
-                isUserDead = result.isUserDead
+                updateDeathState(newDeathState: result.isUserDead)
+
             } catch {
                 print(error.localizedDescription)
             }
         }
+    }
+    
+    func updateDeathState(newDeathState: Bool) {
+        guard isUserDead != newDeathState else { return }
+        
+        if newDeathState {
+            deathMessage = [
+                "L BOZO",
+                "unfortunate.",
+                "L",
+                "too bad.",
+                "you suck",
+                "skill issue",
+                "get pancaked",
+                "oh."
+            ].randomElement()!
+            
+            if let playerPosition {
+                createTrackSplatter(at: playerPosition)
+            }
+        }
+        
+        isUserDead = newDeathState
     }
     
     func updateNodeAlpha(newPlayerPosition: Int?) {
