@@ -6,7 +6,8 @@
 //
 
 
-struct Group: Codable {
+struct Group: Codable, CustomStringConvertible{
+    
     enum Session: String, Codable {
         case morning = "AM"
         case afternoon = "PM"
@@ -15,7 +16,7 @@ struct Group: Codable {
     var groupNumber: Int
     var isAlumni = false
     
-    var stringRepresentation: String {
+    var description: String {
         if isAlumni {
             return "Alumni"
         } else {
