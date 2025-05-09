@@ -23,13 +23,16 @@ struct ScanEntry: Codable {
         }
         let session = index[index.startIndex]
         
-        if let number = Int(index[index.index(index.startIndex, offsetBy: 2)...index.endIndex]) {
+        if let number = Int(index.suffix(index.count-2)) {
             if session == "A" {
                 group.session = .morning
             } else {
                 group.session = .afternoon
             }
-            group.groupNumber = (number % 8) + 1
+            group.groupNumber = (number % 8)
+            if group.groupNumber == 0 {
+                group.groupNumber += 1
+            }
         } else {
             group.isAlumni = true
             group.session = .morning
