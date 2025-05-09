@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct LeaderboardItem: Identifiable, Equatable {
+struct LeaderboardItem: Identifiable, Equatable, Codable {
     var id: String { index }
 
     var index: String
