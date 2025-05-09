@@ -40,7 +40,7 @@ extension GameTile {
         }
         
         static func random() -> Self {
-            let speed: Double = .random(in: 0.5...3)
+            let speed: Double = .random(in: 0.2...2)
             let cars: Int = 1 //Int.random(in: 1...3)
             
             let trainLength = Double(cars) * Constants.trainCarLength + Double(cars - 1) * Constants.trainCarLinkerLength

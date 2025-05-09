@@ -37,6 +37,9 @@ struct ContentView: View {
         .task {
             await gameManager.startHeartbeatMessages()
         }
+        .onAppear {
+            UIApplication.shared.isIdleTimerDisabled = true
+        }
     }
 }
 
