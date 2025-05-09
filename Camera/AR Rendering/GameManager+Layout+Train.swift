@@ -25,6 +25,37 @@ extension GameManager {
         let tunnelNode = setUpTunnels()
         
         tileNode.addChildNode(tunnelNode)
+        
+        trainTrackNodes[index] = trackNode
+    }
+    
+    func createTrackSplatter(at index: Int) {
+        let image = userFace ?? UIImage(named: "bryegg")!
+        
+        let width: Double
+        let height: Double
+        
+        let imageHeight = Constants.tileHeight * 0.8
+        
+        if image.size.width > image.size.height {
+            width = imageHeight
+            height = imageHeight * image.size.height / image.size.width
+        } else {
+            width = imageHeight * image.size.width / image.size.height
+            height = imageHeight
+        }
+        
+        let node = SCNNode(geometry: SCNPlane(width: width, height: height))
+        
+        node.geometry?.firstMaterial?.diffuse.contents = UIImage(named: "bryegg")!
+        
+        node.name = "bryeggontrack"
+        
+        node.position = SCNVector3(0, Constants.sleeperHeight * 2, 0)
+        
+        node.rotation = SCNVector4(x: -2, y: 0, z: 0, w: .pi / 2)
+        
+        trainTrackNodes[index]?.addChildNode(node)
     }
     
     fileprivate func createTrainNode() -> SCNNode {
