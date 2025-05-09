@@ -8,7 +8,7 @@
 import SwiftUI
 import Observation
 import Vapor
-
+import AppKit
 @Observable
 @MainActor
 final class Server: Sendable {
@@ -56,7 +56,7 @@ final class Server: Sendable {
             return await self.gameLayout
         }
         
-        app.on(.POST, "scan") { req in
+        app.on(.POST, "scan", body: .collect(maxSize: 16_000_000)) { req in
             return try await self.onScanReceived(request: req) ? "hello alumni" : "goaway"
         }
         
@@ -123,7 +123,7 @@ final class Server: Sendable {
         guard currentUser == nil else {
             return false
         }
-        
+
         self.currentUser = scanEntry
         self.gameLayout = .random()
         self.isUserDead = false

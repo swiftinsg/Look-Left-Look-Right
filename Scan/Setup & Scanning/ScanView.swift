@@ -104,6 +104,8 @@ struct ScanView: View {
         .fullScreenCover(isPresented: $showingProfileSheet) {
             // clear scanned student
             scannedStudent = nil
+            dataModel.takenImage = nil
+            dataModel.faceBoxes = []
             isTest = false
         } content: {
             StartGameView(student: $scannedStudent, appState: $appState, ip: ipAddress)
