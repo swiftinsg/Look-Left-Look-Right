@@ -27,6 +27,8 @@ final class GameManager: NSObject, Sendable {
     
     var playerPosition: Int?
     
+    var transparencyNodes: [Int: [SCNNode]] = [:]
+    
     var isUserDead = false
     
     func startHeartbeatMessages() async {
@@ -47,14 +49,29 @@ final class GameManager: NSObject, Sendable {
                     self.userFace = UIImage(data: userFace)
                 }
                 
-                playerPosition = result.playerPosition
+                updateNodeAlpha(newPlayerPosition: result.playerPosition)
                 
                 isUserDead = result.isUserDead
-                
-                print("❤️ \(result)")
             } catch {
                 print(error.localizedDescription)
             }
         }
+    }
+    
+    func updateNodeAlpha(newPlayerPosition: Int?) {
+        guard playerPosition != newPlayerPosition else { return }
+        
+        if let newPlayerPosition {
+            for (key, value) in transparencyNodes {
+                
+                let transparency = key < newPlayerPosition ? 0.3 : 1
+                
+                for node in value {
+                    node.opacity = transparency
+                }
+            }
+        }
+        
+        playerPosition = newPlayerPosition
     }
 }

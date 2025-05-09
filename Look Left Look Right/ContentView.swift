@@ -56,6 +56,15 @@ struct ContentView: View {
                     }
                     GameLayoutPreviewView()
                 }
+                
+                VStack {
+                    Text("start session")
+                        .font(.title)
+                    
+                    SessionSetUpTesterView()
+                    
+                    Spacer()
+                }
             }
             .navigationTitle("Debug View")
         }

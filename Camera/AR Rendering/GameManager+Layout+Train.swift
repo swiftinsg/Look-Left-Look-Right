@@ -16,6 +16,8 @@ extension GameManager {
         tileNode.addChildNode(trainNode)
         trainNodes[index] = trainNode
         
+        transparencyNodes[index] = [trainNode]
+        
         let trackNode = createTrackNode()
         
         tileNode.addChildNode(trackNode)
@@ -27,7 +29,7 @@ extension GameManager {
     
     fileprivate func createTrainNode() -> SCNNode {
         let scene = SCNScene(named: "train.usdz")!
-        let trainNode = scene.rootNode
+        let trainNode = scene.rootNode.childNodes[0]
         
         trainNode.name = "train"
         

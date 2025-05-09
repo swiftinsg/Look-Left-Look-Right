@@ -16,9 +16,6 @@ struct ContentView: View {
         ZStack {
             ARView(gameManager: gameManager)
                 .ignoresSafeArea()
-            Button("Simulate Layout Load") {
-                gameManager.setUpLayout(.random())
-            }
         }
         .task {
             await gameManager.startHeartbeatMessages()

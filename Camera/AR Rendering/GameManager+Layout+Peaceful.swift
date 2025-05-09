@@ -14,7 +14,10 @@ extension GameManager {
         tileNode.addChildNode(createFloor())
         
         if let tree = tile.tree, tree != .noTree {
-            tileNode.addChildNode(createTree(tree))
+            let treeNode = createTree(tree)
+            tileNode.addChildNode(treeNode)
+            
+            transparencyNodes[index] = [treeNode]
         }
     }
     
@@ -42,6 +45,7 @@ extension GameManager {
         barkMaterial.diffuse.contents = UIColor.brown
         
         barkNode.geometry?.firstMaterial = barkMaterial
+        barkNode.geometry?.firstMaterial?.isDoubleSided = true
         
         barkNode.position.y = Float(Constants.barkHeight / 2)
         
@@ -73,6 +77,7 @@ extension GameManager {
         leafMaterial.diffuse.contents = greens[index % 2]
         
         treeLeafNode.geometry?.firstMaterial = leafMaterial
+        treeLeafNode.geometry?.firstMaterial?.isDoubleSided = true
         
         treeLeafNode.position = SCNVector3(0, Constants.barkHeight + CGFloat(index) * 0.2, 0)
         
