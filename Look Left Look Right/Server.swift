@@ -31,21 +31,7 @@ final class Server: Sendable {
 
     var needsToResendGameLayoutInHeartbeat = true
 
-    var leaderboard: [LeaderboardItem] = [
-        LeaderboardItem(index: "ABC", name: "tristan", image: Data(), group: Group(session: .morning, groupNumber: 1), timing: 5),
-        LeaderboardItem(index: "ABC", name: "tristan", image: Data(), group: Group(session: .morning, groupNumber: 1), timing: 5),
-        LeaderboardItem(index: "ABC", name: "tristan", image: Data(), group: Group(session: .morning, groupNumber: 1), timing: 5),
-        LeaderboardItem(index: "ABC", name: "tristan", image: Data(), group: Group(session: .morning, groupNumber: 1), timing: 5),
-        LeaderboardItem(index: "ABC", name: "tristan", image: Data(), group: Group(session: .morning, groupNumber: 1), timing: 5),
-        LeaderboardItem(index: "ABC", name: "tristan", image: Data(), group: Group(session: .morning, groupNumber: 1), timing: 5),
-        LeaderboardItem(index: "ABC", name: "tristan", image: Data(), group: Group(session: .morning, groupNumber: 1), timing: 5),
-        LeaderboardItem(index: "ABC", name: "tristan", image: Data(), group: Group(session: .morning, groupNumber: 1), timing: 5),
-        LeaderboardItem(index: "ABC", name: "tristan", image: Data(), group: Group(session: .morning, groupNumber: 1), timing: 5),
-        LeaderboardItem(index: "ABC", name: "tristan", image: Data(), group: Group(session: .morning, groupNumber: 1), timing: 5),
-        LeaderboardItem(index: "ABC", name: "tristan", image: Data(), group: Group(session: .morning, groupNumber: 1), timing: 5),
-        LeaderboardItem(index: "ABC", name: "tristan", image: Data(), group: Group(session: .morning, groupNumber: 1), timing: 5),
-        LeaderboardItem(index: "ABC", name: "tristan", image: Data(), group: Group(session: .morning, groupNumber: 1), timing: 5)
-    ]
+    var leaderboard: [LeaderboardItem] = []
 
     init() {
         floorTiles = (0..<9).map {
