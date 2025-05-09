@@ -77,7 +77,9 @@ final class Server: Sendable {
                                                      playerPosition: self.userCurrentTile)
             }
         }
-        
+
+        readFromFile()
+        writeToFileThread()
         try! await app.execute()
     }
     
@@ -149,6 +151,39 @@ final class Server: Sendable {
         }
         withAnimation {
             leaderboard = leaderboard.sorted(by: { $0.name < $1.name }).sorted(by: { $0.timing < $1.timing })
+        }
+    }
+
+    func writeToFileThread() {
+        Task.detached(priority: .background) {
+            while true {
+                await self.writeToFile()
+                try? await Task.sleep(for: .seconds(1))
+            }
+        }
+    }
+
+    func writeToFile() {
+        let encoder = JSONEncoder()
+        encoder.outputFormatting = [.prettyPrinted, .sortedKeys]
+
+        let url = URL.downloadsDirectory.appendingPathComponent("leaderboard.json")
+        do {
+            let data = try encoder.encode(leaderboard)
+            try data.write(to: url)
+        } catch {
+            print("Error writing to file: \(error)")
+        }
+    }
+
+    func readFromFile() {
+        let url = URL.downloadsDirectory.appendingPathComponent("leaderboard.json")
+        do {
+            let data = try Data(contentsOf: url)
+            let decoder = JSONDecoder()
+            leaderboard = try decoder.decode([LeaderboardItem].self, from: data)
+        } catch {
+            print("Error reading from file: \(error)")
         }
     }
 }

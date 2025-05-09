@@ -22,7 +22,7 @@ struct ScanEntry: Codable {
             group.groupNumber = Int.max
             return group
         }
-        if let number = Int(index[index.index(index.startIndex, offsetBy: 2)...index.endIndex]) {
+        if let number = Int(index.suffix(index.count - 2)) {
             if session == "A" {
                 group.session = .morning
             } else {
