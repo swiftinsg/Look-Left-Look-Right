@@ -25,7 +25,7 @@ final class Camera: NSObject, Sendable {
     private var sessionQueue: DispatchQueue!
     
     private var allCaptureDevices: [AVCaptureDevice] {
-        AVCaptureDevice.DiscoverySession(deviceTypes: [.builtInTrueDepthCamera, .builtInDualCamera, .builtInDualWideCamera, .builtInWideAngleCamera, .builtInDualWideCamera], mediaType: .video, position: .unspecified).devices
+        AVCaptureDevice.DiscoverySession(deviceTypes: [.builtInTrueDepthCamera], mediaType: .video, position: .unspecified).devices
     }
     
     private var frontCaptureDevices: [AVCaptureDevice] {

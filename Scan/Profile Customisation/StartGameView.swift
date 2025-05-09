@@ -10,7 +10,7 @@ import SwiftUI
 struct StartGameView: View {
     @Binding var student: StudentExport?
     @Binding var appState: AppState 
-    
+    @Environment(DataModel.self) private var model
     var ip: String
     var body: some View {
         
@@ -21,6 +21,7 @@ struct StartGameView: View {
             StudentsView(students: StudentExport.sampleData, selectedStudent: $student, appState: $appState)
         case .profileSetup:
             WelcomeProfileView(student: $student, appState: $appState, ip: ip)
+                .environment(model)
         case .loading:
             ProgressView("Loading...")
         case .start:

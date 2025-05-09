@@ -16,6 +16,21 @@ struct ContentView: View {
         ZStack {
             ARView(gameManager: gameManager)
                 .ignoresSafeArea()
+            
+            if gameManager.isUserDead {
+                Rectangle()
+                    .stroke(Color.red)
+                    .shadow(color: .red, radius: 20, x: 0, y: 0)
+                    .shadow(color: .red, radius: 20, x: 0, y: 0)
+                    .shadow(color: .red, radius: 20, x: 0, y: 0)
+                    .shadow(color: .red, radius: 20, x: 0, y: 0)
+                    .ignoresSafeArea()
+                
+                Text(gameManager.deathMessage)
+                    .font(.largeTitle)
+                    .fontWeight(.bold)
+                    .frame(maxHeight: .infinity, alignment: .top)
+            }
         }
         .persistentSystemOverlays(.hidden)
         .statusBarHidden()

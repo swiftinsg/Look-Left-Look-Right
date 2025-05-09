@@ -16,14 +16,15 @@ import SwiftUI
 import Vision
 import os.log
 
-final class DataModel: ObservableObject {
+@Observable
+final class DataModel {
     let camera = Camera()
-    @Published var takenImage: Image?
-    @Published var viewfinderImage: Image?
-    @Published var faceBoxes: [CGRect] = []
-    @Published var displayImageSize: CGSize = .zero
-    @Published var safeAreaOffset: CGFloat = .zero
-    @Published var cropping: Bool = false
+    var takenImage: Image?
+    var viewfinderImage: Image?
+    var faceBoxes: [CGRect] = []
+    var displayImageSize: CGSize = .zero
+    var safeAreaOffset: CGFloat = .zero
+    var cropping: Bool = false
     var isPhotosLoaded = false
     
     var visionTask: Task<Void, Never>? = nil

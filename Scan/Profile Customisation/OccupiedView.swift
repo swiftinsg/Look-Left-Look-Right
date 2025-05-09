@@ -14,7 +14,9 @@ struct OccupiedView: View {
             Text("Someone's playing already! Try again later.")
                 .padding()
             Button("Back") {
-                appState = .profileSetup
+                withAnimation {
+                    appState = .profileSetup
+                }
             }
         }
         

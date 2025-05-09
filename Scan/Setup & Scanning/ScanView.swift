@@ -14,6 +14,9 @@ struct ScanView: View {
     @State var showingProfileSheet: Bool = false
     @State var isTest: Bool = false
     @Binding var ipAddress: String
+    
+    @State var dataModel = DataModel()
+    
     @State var appState: AppState = .profileSetup
     var students: [StudentExport]
     @State var scannedStudent: StudentExport?
@@ -104,6 +107,13 @@ struct ScanView: View {
             isTest = false
         } content: {
             StartGameView(student: $scannedStudent, appState: $appState, ip: ipAddress)
+                .environment(dataModel)
+        }
+        .task {
+            if !dataModel.camera.isRunning {
+                print("starting camera")
+                await dataModel.camera.start()
+            }
         }
     }
     
